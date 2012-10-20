@@ -36,6 +36,6 @@ Icon
 *.csproj
 *.unityproj
 *.sln
-UTanks.userprefs
+*.userprefs
 *.suo
-Assembly-CSharp.pidb
+*.pidb
