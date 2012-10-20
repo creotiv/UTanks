@@ -11,9 +11,11 @@ public class PlayerMovment : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		Vector3 pos = gameObject.transform.position;
+		
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
-			gameObject.transform.Translate(new Vector3());
+			gameObject.transform.Translate(pos + new Vector3(10.0, 0.0, 0.0));
 		}
 		
 		if (Input.GetKey(KeyCode.RightArrow))
