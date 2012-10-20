@@ -70,26 +70,9 @@ public class PlayerMovment : MonoBehaviour
 				pos.z = -SCENE_SIZE;
 		}
 
-		if (Input.GetKey(KeyCode.Space) && bullsCnt == 0)
-		{
-			GameObject new_bullet = Instantiate(bullet, oldPos, Quaternion.Euler(new Vector3(0, angleY, 0))) as GameObject;
-			BulletFly bf = new_bullet.GetComponent<BulletFly>() as BulletFly;
-			bf.owner = this.gameObject;
-			bullsCnt++;
-		}
-
 		gameObject.transform.position = pos;
 		transform.position += direction;
 		transform.rotation = Quaternion.Euler(new Vector3(0, angleY, 0));
 	}
 
-	void shoot() {
-		if (bullsCnt == 0)
-		{
-			var newBullet = Instantiate(bullet, oldPos, Quaternion.Euler(new Vector3(0, angleY, 0))) as GameObject;
-			var bf = newBullet.GetComponent<BulletFly>();
-			bf.owner = this.gameObject;
-			bullsCnt++;
-		}
-	}
 }

@@ -36,3 +36,5 @@ Icon
 *.csproj
 *.unityproj
 *.sln
+/Assembly-CSharp.pidb
+/UTanks.userprefs

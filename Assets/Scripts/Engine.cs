@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public enum MovmentType {
+public enum MovmentType
+{
 	Stop,
 	Left,
 	Right,
@@ -10,18 +11,20 @@ public enum MovmentType {
 }
 
 
-public class Engine : MonoBehaviour 
+public class Engine : MonoBehaviour
 {
 
-	public GameObject bullet;
-	public int bullsCnt;
+	// public int bullsCnt;
+	public GameObject bulletType;
 
+	public int team = 0;
 	public float TankSpeed = 1.0f;
 	public const float SCENE_SIZE = 240.0f;
 
 	private Vector3 oldPos;
 	private float yaw;
 	private Vector3 direction = new Vector3();
+	private GameObject bullet;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -35,7 +38,7 @@ public class Engine : MonoBehaviour
 
 	void Start()
 	{
-		bullsCnt = 0;
+		bullet = null;
 	}
 
 	void FixedUpdate()
@@ -44,21 +47,27 @@ public class Engine : MonoBehaviour
 			return;
 
 		oldPos = transform.position;
-		transform.position += direction;
+		var pos = transform.position + direction;
+
+		pos.x = Mathf.Clamp(pos.x, -SCENE_SIZE, SCENE_SIZE);
+		pos.z = Mathf.Clamp(pos.z, -SCENE_SIZE, SCENE_SIZE);
+
+		transform.position = pos;
 		transform.rotation = Quaternion.Euler(new Vector3(0, yaw, 0));
 	}
 
-	void shoot() {
-		if (bullsCnt == 0)
+	public void shoot()
+	{
+		if (bullet == null)
 		{
-			var newBullet = Instantiate(bullet, oldPos, Quaternion.Euler(new Vector3(0, yaw, 0))) as GameObject;
-			var bf = newBullet.GetComponent<BulletFly>();
-			bf.owner = this.gameObject;
-			bullsCnt++;
+			bullet = Instantiate(bulletType, transform.position, transform.rotation) as GameObject;
+			var bf = bullet.GetComponent<BulletFly>();
+			bf.team = team;
 		}
 	}
 
-	void setMovement(MovmentType movementTypt) {
+	public void setMovement(MovmentType movementTypt)
+	{
 		direction.x = 0;
 		direction.z = 0;
 
