@@ -46,10 +46,7 @@ public class Brain : MonoBehaviour
 		//var movements = Enum.GetValues(typeof(MovmentType));
 		//var random = new System.Random();
 
-		var rnd = new Random();
-		int index = 1;
-		index = (int)(Random.value * ((float)movements.Length - 0.00001));
-
+		int index = (int)(Random.value * ((float)movements.Length - 0.00001));
 		engine.setMovement(movements[index]);
 	}
 }

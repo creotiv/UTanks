@@ -14,22 +14,22 @@ public class BulletFly : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		DestroyObject(this.gameObject);
+		DestroyObject(gameObject);
 	}
 
 	void FixedUpdate()
 	{
 
-		float a = transform.rotation.eulerAngles.y;
+		float yaw = transform.rotation.eulerAngles.y;
 		Vector3 pos = transform.position;
-		pos.x -= Mathf.Cos(Mathf.Deg2Rad * a) * BULLET_SPEED;
-		pos.z += Mathf.Sin(Mathf.Deg2Rad * a) * BULLET_SPEED;
+		pos.x -= Mathf.Cos(Mathf.Deg2Rad * yaw) * BULLET_SPEED;
+		pos.z += Mathf.Sin(Mathf.Deg2Rad * yaw) * BULLET_SPEED;
 
 		float size = collider.bounds.size.y;
-		if (pos.x + size < -PlayerMovment.SCENE_SIZE || pos.x - size > PlayerMovment.SCENE_SIZE ||
-			pos.z + size < -PlayerMovment.SCENE_SIZE || pos.z - size > PlayerMovment.SCENE_SIZE)
+		if (pos.x + size < -Engine.SCENE_SIZE || pos.x - size > Engine.SCENE_SIZE ||
+			pos.z + size < -Engine.SCENE_SIZE || pos.z - size > Engine.SCENE_SIZE)
 		{
-			DestroyObject(this.gameObject);
+			DestroyObject(gameObject);
 			return;
 		}
 

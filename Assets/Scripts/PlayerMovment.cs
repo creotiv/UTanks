@@ -84,7 +84,7 @@ public class PlayerMovment : MonoBehaviour
 		{
 			GameObject new_bullet = Instantiate(bullet, oldPos, Quaternion.Euler(new Vector3(0, angleY, 0))) as GameObject;
 			BulletFly bf = new_bullet.GetComponent<BulletFly>() as BulletFly;
-			bf.owner = this.gameObject;
+			//bf.owner = this.gameObject;
 			bullsCnt++;
 		}
 
