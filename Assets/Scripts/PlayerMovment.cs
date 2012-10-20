@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovment : MonoBehaviour {
 	
-	private const float TANK_SPEED = 1.0f;
+	private const float TANK_SPEED = 2.0f;
 	private const float SCENE_SIZE = 240.0f;
 	
 	private Vector3 oldPos;
