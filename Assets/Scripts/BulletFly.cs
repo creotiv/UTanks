@@ -18,9 +18,9 @@ public class BulletFly : MonoBehaviour
 		
 		//if (other.gameObject.GetComponent<Block>() != null)
 		
-		//Instantiate (Detonator,other.gameObject.transform, Quaternion.identity);
+		GameObject expl =  Instantiate (GameObject.Find("Explo"), other.gameObject.transform.position, Quaternion.identity) as GameObject;
 		
-		//(gameObject.GetComponent<Detonator>() as Detonator).Explode();
+		(expl.GetComponent<Detonator>() as Detonator).Explode();
 			DestroyObject(other.gameObject);
 		
 			DestroyObject(this.gameObject);

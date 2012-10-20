@@ -1,14 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ConstructLevel1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BulletFly.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets/Scripts/PlayerMovment.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/BulletFly.cs" Line="34" Column="1" />
-=======
-      <File FileName="Assets/Scripts/BulletFly.cs" Line="20" Column="20" />
-      <File FileName="Assets/Scripts/ConstructLevel1.cs" Line="53" Column="1" />
->>>>>>> Merge.
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="45" Column="1" />
+      <File FileName="Assets/Scripts/ConstructLevel1.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BulletFly.cs" Line="17" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
