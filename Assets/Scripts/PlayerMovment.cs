@@ -1,23 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-public class PlayerMovment : MonoBehaviour {
-	
-	private const float TANK_SPEED = 2.0f;
-	private const float SCENE_SIZE = 240.0f;
-	
-=======
 public class PlayerMovment : MonoBehaviour
 {
 
 	public GameObject bullet;
 	public int bullsCnt;
 
-	private const float TANK_SPEED = 1.0f;
+	private const float TANK_SPEED = 2.0f;
 	public const float SCENE_SIZE = 240.0f;
 
->>>>>>> 9648be271b8dfc6e07fca323814058c4430a47d1
 	private Vector3 oldPos;
 	private float angleY;
 
