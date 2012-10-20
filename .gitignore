@@ -38,3 +38,4 @@ Icon
 *.sln
 /Assembly-CSharp.pidb
 /UTanks.userprefs
+/*.suo
