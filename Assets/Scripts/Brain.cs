@@ -8,7 +8,8 @@ public class Brain : MonoBehaviour
 	private Engine engine;
 	private bool inited = false;
 	private float moveStartTime;
-	private MovmentType[] movements = 
+	private float shootStartTime;
+	private MovmentType[] movements =
 	{
 		MovmentType.Down,
 		MovmentType.Left,
@@ -16,7 +17,8 @@ public class Brain : MonoBehaviour
 		MovmentType.Up
 	};
 
-	public float MoveTimer = 1;
+	public float moveTimer = 1;
+	public float shootTimer = 1.4f;
 
 	// Use this for initialization
 	void Start()
@@ -24,6 +26,7 @@ public class Brain : MonoBehaviour
 		engine = gameObject.GetComponent<Engine>();
 		if (engine != null) inited = true;
 		moveStartTime = Time.time;
+		shootStartTime = Time.time;
 		changeMove();
 	}
 
@@ -31,10 +34,16 @@ public class Brain : MonoBehaviour
 	void Update()
 	{
 		var time = Time.time;
-		if (time - moveStartTime >= MoveTimer)
+		if (time - moveStartTime >= moveTimer)
 		{
 			changeMove();
 			moveStartTime = time;
+		}
+
+		if (time - shootStartTime >= shootTimer)
+		{
+			engine.shoot();
+			shootStartTime = time;
 		}
 	}
 
