@@ -18,7 +18,7 @@ public class Engine : MonoBehaviour
 	public GameObject bulletType;
 
 	public int team = 0;
-	public float TankSpeed = 1.0f;
+	public float TankSpeed = 4.0f;
 	public const float SCENE_SIZE = 240.0f;
 
 	private Vector3 oldPos;
@@ -43,17 +43,21 @@ public class Engine : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		rigidbody.velocity = Vector3.zero;
+
 		if (direction == Vector3.zero)
 			return;
 
 		oldPos = transform.position;
 		var pos = transform.position + direction;
 
-		pos.x = Mathf.Clamp(pos.x, -SCENE_SIZE, SCENE_SIZE);
-		pos.z = Mathf.Clamp(pos.z, -SCENE_SIZE, SCENE_SIZE);
+		pos.x = Mathf.Round(Mathf.Clamp(pos.x, -SCENE_SIZE, SCENE_SIZE) * TankSpeed) / TankSpeed;
+		pos.z = Mathf.Round(Mathf.Clamp(pos.z, -SCENE_SIZE, SCENE_SIZE) * TankSpeed) / TankSpeed;
 
 		transform.position = pos;
 		transform.rotation = Quaternion.Euler(new Vector3(0, yaw, 0));
+
+		//Debug.Log(oldPos);
 	}
 
 	public void shoot()
