@@ -13,20 +13,30 @@ public class BulletFly : MonoBehaviour
 	{
 
 	}
-	
-	 void OnTriggerEnter(Collider other) {
-		
-		//if (other.gameObject.GetComponent<Block>() != null)
-		
-		GameObject expl =  Instantiate (GameObject.Find("Explo"), other.gameObject.transform.position, Quaternion.identity) as GameObject;
-		
-		(expl.GetComponent<Detonator>() as Detonator).Explode();
-			DestroyObject(other.gameObject);
-		
-			DestroyObject(this.gameObject);
-		//(owner.GetComponent<PlayerMovment>() as PlayerMovment).bullsCnt--;
-    }
 
+	void OnTriggerEnter(Collider collider)
+	{
+		var engine = collider.GetComponent<Engine>();
+		if (engine != null && engine.team == team)
+		{
+			return;
+		}
+
+		var health = collider.gameObject.GetComponent<Health>();
+		if (health != null)
+		{
+			health.onDamage(1);
+
+			var expl = Instantiate(GameObject.Find("Explo"), collider.transform.position, Quaternion.identity) as GameObject;
+			expl.GetComponent<Detonator>().Explode();
+
+			DestroyObject(gameObject);
+		}
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void FixedUpdate()
 	{
 
