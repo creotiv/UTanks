@@ -60,7 +60,7 @@ public class ConstructLevel1 : MonoBehaviour
 						engine = player.GetComponent<Engine>();
 						if (engine != null)
 						{
-							engine.team = 1;
+							engine.team = 0;
 						}
 						break;
 					case BRICK_TYPE:
